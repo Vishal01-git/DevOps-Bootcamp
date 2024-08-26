@@ -200,3 +200,143 @@ After creating our service file we will directly start or stop using **systemctl
 
 To fetch the changes run
 >systemctl daemon-reload
+
+### Networking Basics Commands
+
+To list and modify interfaces on the host IP
+>ip link
+
+To see the IP addresses asigned to those interfaces.
+>ip addr
+
+To set the IP addresses on the interfaces.
+>ip addr add 192.168.1.10/24 dev eth0
+
+To view the routing table
+~~~
+ip route
+or 
+route       
+~~~
+
+To add entries into the routing table
+>ip route add 192.168.1.0/24 via 192.168.2.1
+
+To check if ip forwarding is enable on the host
+>cat /proc/sys/net/ipv4/ip_forward
+
+### DNS
+
+TO ping the one system from another we use
+~~~
+ping 192.168.1.11
+but let suppose i have a database configure on this ip so instead of pinging to ip every time i can also give it a name.
+To set the name we can use
+cat >> /etc/hosts
+192.168.1.11   db
+~~~
+
+But if we have a lot of ip mapping it will be diffult to manage all that so to tackle this we will use a DNS server.
+SO for this add all the IP mapping in the dns server and update the host system with the following command pointing to the server DNS
+~~~
+cat /etc/resolv.conf
+nameserver    192.168.1.100
+
+Here 192.168.1.100 is the ip of DNS Server
+~~~
+
+Lets- suppose we have added a entry in our DNS server i.e *192.168.1.10     web.mycompany.com* , so now for pinging we have to write *ping web.mycompany.com*.
+But if you simply want to write *ping web* , we have to add another entry in our host resolv.conf file using below command.
+~~~
+cat >> /etc/resolv.conf
+search     mycompany.com  prod.mycompany.com
+~~~
+
+There are some other tool also to test DNS resolution
+~~~
+nslookup www.google.com
+Note - it will not comsider entry in local host file, it will only comsider the entry in DNS Server.
+
+dig www.google.com
+Same goes for this.
+~~~
+
+## Application Basics
+
+**Install & Extract Java**
+~~~
+wget https://download.java.net....
+Now to extract
+tar -xvf openjdk-13.0.2_linux-x64_bin.tar.gz
+Now to check version
+jdk-13.0.2/bin/java -version
+jdk -version
+~~~
+
+**Build and Packaging**
+
+Compile java source code file into bytecode(.class file)
+>javac MyClass.java
+
+Run a java application
+>java MyClass
+
+Packages compiled Java classes and resources into a JAR file
+>jar cvf myapp.jar -C bin/ .
+
+Generate APi documentation 
+>javadoc -d docs/ MyClass.java
+
+Run jar file
+>java -jar myapp.jar
+
+**Install NodeJs**
+
+~~~
+First add repsitory
+curl -sL https://rpm.nodesource.com/setup_13.x | bash -
+After this install
+yum install nodejs
+~~~
+
+**NPM Commands**
+
+To check version
+>npm -v
+
+To search file
+>npm search file
+
+To install
+>npm install file
+
+To install globally
+>npm install file -g
+
+**Python commands**
+~~~
+To install
+yum install python2 or python3
+(Provide the perticular version you want to install)
+To check version
+python -V
+To run python file
+python2 or python3 file_name
+~~~
+
+To get list of path that python look for
+>python2 -c "import sys; print(sys.path)"
+
+**PIP Commands**
+~~~
+To install dependencies
+pip install flask
+To show where it is installed
+pip show flask
+To install multiple dependencies at once we can defined all that in requirement.txt and run command-
+pip install -r requirement.txt
+To upgrade package
+pip install flask --upgrade
+To unistall
+pip uninstall flask
+~~~
