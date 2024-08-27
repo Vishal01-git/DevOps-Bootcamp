@@ -1,5 +1,5 @@
 ## Flow of Devops
-![flow diagram](image.png)
+![flow diagram](https://slidebazaar.com/wp-content/uploads/2023/05/DevOps-Process-Flow-PowerPoint-Template.jpg)
 
 ## Shell Types
 * Bourne Shell (Sh Shell)
