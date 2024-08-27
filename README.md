@@ -340,3 +340,6 @@ pip install flask --upgrade
 To unistall
 pip uninstall flask
 ~~~
+## Git Commands
+
+You can go through all the important git command using this document [Github Document](https://education.github.com/git-cheat-sheet-education.pdf)
