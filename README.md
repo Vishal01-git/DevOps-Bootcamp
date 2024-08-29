@@ -1,5 +1,5 @@
 ## Flow of Devops
-![flow diagram](https://slidebazaar.com/wp-content/uploads/2023/05/DevOps-Process-Flow-PowerPoint-Template-Dark.jpg)
+![flow diagram](image.png)
 
 ## Shell Types
 * Bourne Shell (Sh Shell)
@@ -340,6 +340,11 @@ pip install flask --upgrade
 To unistall
 pip uninstall flask
 ~~~
+
 ## Git Commands
 
 You can go through all the important git command using this document [Github Document](https://education.github.com/git-cheat-sheet-education.pdf)
+
+
+## Jenkins Commands to Run and configure
+![Jenkins commands](https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/10/Slide1-11.jpg)
